@@ -32,6 +32,24 @@
   .mdc-notched-outline__trailing {
     @include mdc-theme-prop(border-color, $color);
   }
+
+  // Two selectors to ensure we select the appropriate class when applied from this component or a parent component.
+  .mdc-notched-outline--notched,
+  &.mdc-notched-outline--notched {
+    .mdc-notched-outline__notch {
+      border-top-color: transparent;
+    }
+  }
+}
+
+///
+/// Removes transparent border when notched outline is in notched state. Use this when label is not center aligned to
+/// prevent jump on focused state.
+///
+@mixin mdc-notched-outline-notched-reset {
+  .mdc-notched-outline--notched .mdc-notched-outline__notch {
+    border-top: none;
+  }
 }
 
 @mixin mdc-notched-outline-stroke-width($width) {
@@ -82,6 +100,40 @@
   &.mdc-notched-outline--upgraded,
   .mdc-notched-outline--upgraded {
     @include mdc-floating-label-float-position($positionY, $positionX, $scale);
+
+    // stylelint-disable-next-line no-descending-specificity
+    .mdc-floating-label--float-above {
+      font-size: 1rem;
+    }
+  }
+}
+
+///
+/// Sets floating label position in notched outline when label is afloat.
+///
+/// @param {Number} $positionY Absolute Y-axis position in `px`.
+/// @param {Number} $positionX Absolute X-axis position in `px`. Defaults to `0`.
+/// @param {Number} $scale Defaults to `.75`.
+///
+/// @todo Replace mixin `mdc-notched-outline-floating-label-float-position` with this mixin when all other usages are
+///     in absolute.
+/// @todo Instead of adjusting `$positionY` with label box height that might change based on floating label font size
+///     wrap label in a child element to apply `transitionY(-50%)` to automatically offset based on box height.
+///
+@mixin mdc-notched-outline-floating-label-float-position-absolute($positionY, $positionX: 0, $scale: .75) {
+  $positionY: $positionY + $mdc-notched-outline-label-box-height / 2;
+
+  @include mdc-floating-label-float-position($positionY, $positionX, 1);
+
+  .mdc-floating-label--float-above {
+    font-size: ($scale * 1rem);
+  }
+
+  // Two selectors to ensure we select the appropriate class when applied from this component or a parent component.
+  &.mdc-notched-outline--upgraded,
+  .mdc-notched-outline--upgraded {
+    @include mdc-floating-label-float-position(
+      $positionY - $mdc-notched-outline-label-adjust-absolute, $positionX, $scale);
 
     // stylelint-disable-next-line no-descending-specificity
     .mdc-floating-label--float-above {

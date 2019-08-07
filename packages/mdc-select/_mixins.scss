@@ -154,6 +154,8 @@
     @include mdc-notched-outline-stroke-width(2px);
     @content;
   }
+
+  @include mdc-notched-outline-notched-reset;
 }
 
 @mixin mdc-select-focused-outline-idle_ {
