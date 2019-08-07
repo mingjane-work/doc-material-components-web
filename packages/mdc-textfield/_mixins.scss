@@ -294,6 +294,7 @@
   }
 
   // Include these mixins to override above `transform` property.
+  //TODO: Remove these from here when floating label is center aligned in all position - this lowers specificity.
   @include mdc-floating-label-float-position($mdc-text-field-label-position-y);
   @include mdc-floating-label-shake-animation(standard);
 
@@ -659,53 +660,4 @@
   .mdc-floating-label {
     @include mdc-floating-label-ink-color($color);
   }
-}
-
-// Revert text field to previous pixel state for backward compatibility.
-@mixin mdc-text-field-patch-all {
-  @include mdc-text-field-patch;
-
-  &.mdc-text-field--outlined {
-    @include mdc-text-field-outlined-patch;
-  }
-
-  &.mdc-text-field--with-leading-icon.mdc-text-field--outlined {
-    @include mdc-text-field-outlined-with-leading-icon-patch;
-  }
-
-  &.mdc-text-field--textarea {
-    @include mdc-text-field-textarea-patch;
-  }
-}
-
-@mixin mdc-text-field-patch {
-  .mdc-floating-label {
-    top: 18px;
-    transform: none;
-  }
-
-  // Include these mixins to override above `transform` property.
-  @include mdc-floating-label-float-position(50%);
-  @include mdc-floating-label-shake-animation(standard);
-}
-
-@mixin mdc-text-field-outlined-patch {
-  .mdc-floating-label {
-    top: 17px;
-  }
-
-  @include mdc-notched-outline-floating-label-float-position(130%);
-  @include mdc-notched-outline-notched-reset;
-}
-
-@mixin mdc-text-field-outlined-with-leading-icon-patch {
-  @include mdc-notched-outline-floating-label-float-position(130%, 32px);
-}
-
-@mixin mdc-text-field-textarea-patch {
-  .mdc-floating-label {
-    top: 17px;
-  }
-
-  @include mdc-notched-outline-floating-label-float-position(130%);
 }

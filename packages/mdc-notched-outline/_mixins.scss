@@ -115,15 +115,15 @@
 /// @param {Number} $positionX Absolute X-axis position in `px`. Defaults to `0`.
 /// @param {Number} $scale Defaults to `.75`.
 ///
-/// @todo Replace mixin `mdc-notched-outline-floating-label-float-position` with this mixin when all other usages are
-///     in absolute.
+/// @todo Replace mixin `mdc-notched-outline-floating-label-float-position` with this mixin when floating label is
+///     center aligned in all the places.
 /// @todo Instead of adjusting `$positionY` with label box height that might change based on floating label font size
 ///     wrap label in a child element to apply `transitionY(-50%)` to automatically offset based on box height.
 ///
 @mixin mdc-notched-outline-floating-label-float-position-absolute($positionY, $positionX: 0, $scale: .75) {
   $positionY: $positionY + $mdc-notched-outline-label-box-height / 2;
 
-  @include mdc-floating-label-float-position($positionY, $positionX, 1);
+  @include mdc-floating-label-float-position($positionY + $mdc-notched-outline-label-adjust-absolute, $positionX, 1);
 
   .mdc-floating-label--float-above {
     font-size: ($scale * 1rem);
@@ -133,7 +133,7 @@
   &.mdc-notched-outline--upgraded,
   .mdc-notched-outline--upgraded {
     @include mdc-floating-label-float-position(
-      $positionY - $mdc-notched-outline-label-adjust-absolute, $positionX, $scale);
+      $positionY, $positionX, $scale);
 
     // stylelint-disable-next-line no-descending-specificity
     .mdc-floating-label--float-above {

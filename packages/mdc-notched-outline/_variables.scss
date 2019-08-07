@@ -30,5 +30,11 @@ $mdc-notched-outline-leading-width: 12px !default;
 $mdc-notched-outline-padding: 4px !default;
 // This variable keeps the before/after JS label centered in the notch when the font-size is changed.
 $mdc-notched-outline-label-adjust: 14% !default;
-$mdc-notched-outline-label-box-height: 18px !default;
+
+/// Label box height when it is floating above for notched upgraded. This value is used to put the label vertically in
+/// the middle when it is notched.
+$mdc-notched-outline-label-box-height: 13.5px !default;
+
+/// Label adjust offset applied to floating label when it is notched. Since notch without upgraded has different font
+/// size we add additional offset value.
 $mdc-notched-outline-label-adjust-absolute: 2.5px !default;
