@@ -4,10 +4,10 @@ layout: detail
 section: components
 excerpt: "Material Design-styled buttons."
 iconId: button
-path: /catalog/buttons/
+path: /catalog/buttons/button
 -->
 
-# Buttons
+# Buttons (mdc-button)
 
 <!--<div class="article__asset">
   <a class="article__asset-link"
@@ -16,9 +16,70 @@ path: /catalog/buttons/
   </a>
 </div>-->
 
-Buttons allow users to take actions, and make choices, with a single tap.
+Buttons allow users to take actions, and make choices, with a single tap. This button component has several built-in styles to support different levels of emphasis, as typically any UI will contain a few different buttons to indicate different actions.
 
-## Design & API Documentation
+## `mdc-button` Variants
+* [Text (flat) button](#text-flat-button)
+    <img src="" alt="image or demo of a text button">
+* [Outlined button](#outlined-button)
+    <img src="" alt="image or demo of an outline button">
+* [Contained (raised) button](#contained-raised-button)
+    <img src="" alt="image or demo of a contained (raised) button">
+
+## Using `mdc-button`
+The `mdc-button` component provides an implementation of Material Design’s button component without the toggle capability. Go to [mdc-icon-button](mdc-icon-button) to add [toggle buttons using icons](https://material.io/buttons/#toggle-button).
+
+### Install `mcd-button`
+Install the `mdc-button` component before including it in your source.
+
+```bash
+npm install @material/buttons
+```
+### Add a theme (style)
+The `mdc-button` component works with themes (styles). Import a style into your stylesheet to apply it to your website, including buttons:
+
+```css
+@import "@material/button/mdc-button";
+```
+### Import JavaScript button effects
+You can also add a JavaScript ripple effect (see [MDC Ripple](https://github.com/material-components/material-components-web/blob/master/packages/mdc-ripple)) to your buttons by importing then instantiating `MCDRipple`. See the page on importing the [JavaScript component](https://github.com/material-components/material-components-web/blob/master/docs/importing-js.md) for more information on importing JavaScript.
+
+```js
+import {MDCRipple} from '@material/ripple';
+
+const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
+```
+
+### Add an icon to `mdc-button`
+
+Add an icon to your `mdc-button` instance using the following steps:
+
+1. In your HTML file, reference the font library you would like to use (we recommend the [Material Icons](https://material.io/tools/icons/) from Google Fonts):
+    ```HTML
+    <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    ```
+1. Include the `mcd-button__icon` class inside your button element. Set the attribute `area-hidden="true"`.
+    **Note** The location of the icon element determines if the icon comes before (*leading*) or after (*trailing icon*) the text.
+
+    **Example using [Material Icons](https://material.io/tools/icons/)**
+    ```HTML
+    <button class="mdc-button">
+      <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+      <span class="mdc-button__label">Button</span>
+    </button>
+    ```
+    **Example using SVG Icons**
+    ```html
+    <button class="mdc-button">
+      <svg class="mdc-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="...">
+        /*...*/
+      </svg>
+      <span class="mdc-button__label">Button</span>
+    </button>
+    ```
+### Related APIs
 
 <ul class="icon-list">
   <li class="icon-list-item icon-list-item--spec">
@@ -29,155 +90,56 @@ Buttons allow users to take actions, and make choices, with a single tap.
   </li>
 </ul>
 
-## Installation
+### Text (flat) button
 
-```
-npm install @material/button
-```
+Text buttons are typically used for less-pronounced actions, including those located:
+* In dialogs
+* In cards
+In cards, text buttons help maintain an emphasis on card content.
 
-## Basic Usage
 
-### HTML Structure
+
+element | class | class description
+---|---|---
+button | `mdc-button` | text button
+span | `mdc-button__label` | applies the text to the button
+
+#### Text button example
+<img src=""<img src="" alt="image or demo of a text (flat) button based on the sample code output">
 
 ```html
-<button class="mdc-button">
+ <button class="mdc-button">
   <span class="mdc-button__label">Button</span>
 </button>
 ```
 
-> _NOTE_: Examples here use the generic `<button>`, but users can also apply the `mdc-button` class to `<a>` elements.
+### Outlined button
 
-### Styles
+Outlined buttons are medium-emphasis buttons. They contain actions that are important, but aren’t the primary action in an app.
 
-```scss
-@import "@material/button/mdc-button";
-```
 
-### JavaScript Instantiation
+#### Outlined button example
 
-The button will work without JavaScript, but you can enhance it to have a ripple effect by instantiating `MDCRipple` on the root element. See [MDC Ripple](../mdc-ripple) for details.
-
-```js
-import {MDCRipple} from '@material/ripple';
-
-const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
-```
-
-> See [Importing the JS component](../../docs/importing-js.md) for more information on how to import JavaScript.
-
-## Variants
-
-### Contained Button
-
-To style a contained button, add the `mdc-button--raised` class to the `<button>` element for a contained button with elevation, or the `mdc-button--unelevated` class for a contained button flush with the surface.
-
-### Outlined Button
-
-To style an outlined button, add the class `mdc-button--outlined` to the `<button>` element.
-
-### Icons
-
-We recommend using [Material Icons](https://material.io/tools/icons/) from Google Fonts:
+<img src=""<img src="" alt="image or demo of an outlined button based on the sample code output">
 
 ```html
-<head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-```
-
-However, you can also use SVG, [Font Awesome](https://fontawesome.com/), or any other icon library you wish.
-
-To add an icon, add an element with the `mdc-button__icon` class inside the button element and set the attribute `aria-hidden="true"`. The icon is set to 18px to meet legibility requirements.
-
-```html
-<button class="mdc-button">
-  <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+ <button class="mdc-button--outlined">
   <span class="mdc-button__label">Button</span>
 </button>
 ```
 
-It's also possible to use an SVG icon:
+### Contained (raised) button
+
+Contained buttons are high-emphasis, distinguished by their use of elevation and fill. They contain actions that are primary to your app.
+
+
+#### Contained button example
+
+
+<img src=""<img src="" alt="image or demo of a contained (raised) button based on the sample code output">
 
 ```html
-<button class="mdc-button">
-  <svg class="mdc-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="...">
-  ...
-  </svg>
+ <button class="mdc-button--elevated">
   <span class="mdc-button__label">Button</span>
 </button>
 ```
-
-#### Trailing Icon
-
-Certain icons make more sense to appear after the button's text label rather than before. This can be accomplished by
-putting the icon markup _after_ the `mdc-button__label` element.
-
-```html
-<button class="mdc-button">
-  <span class="mdc-button__label">Button</span>
-  <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
-</button>
-```
-
-> _NOTE_: The `mdc-button__label` element is _required_ in order for the trailing icon to be styled appropriately.
-
-### Disabled
-
-To disable a button, add the `disabled` attribute directly to the `<button>`, or set the `disabled` attribute on the `<fieldset>` containing the button.
-Disabled buttons cannot be interacted with and have no visual interaction effect.
-
-```html
-<button class="mdc-button" disabled>
-  <span class="mdc-button__label">Button</span>
-</button>
-```
-
-## Style Customization
-
-### CSS Classes
-
-CSS Class | Description
---- | ---
-`mdc-button` | Mandatory. Defaults to a text button that is flush with the surface.
-`mdc-button--raised` | Optional. Styles a contained button that is elevated above the surface.
-`mdc-button--unelevated` | Optional. Styles a contained button that is flush with the surface.
-`mdc-button--outlined` | Optional. Styles an outlined button that is flush with the surface.
-`mdc-button--dense` | Optional. Makes the button text and container slightly smaller.
-`mdc-button__label` | Recommended.\* Indicates the element containing the button's text label.
-`mdc-button__icon` | Optional. Indicates the element containing the button's icon.
-
-> \*_NOTE_: The `mdc-button__label` element is required for buttons with a trailing icon, but it is currently optional for
-> buttons with no icon or a leading icon. In the latter cases, it is acceptable for the text label to simply exist
-> directly within the `mdc-button` element.
-> However, the `mdc-button__label` class may become mandatory for all cases in the future, so it is recommended to
-> always include it to be future-proof.
-
-### Sass Mixins
-
-To customize a button's color and properties, you can use the following mixins.
-
-#### Basic Sass Mixins
-
-MDC Button uses [MDC Theme](../mdc-theme)'s `primary` color by default. Use the following mixins to customize it.
-
-Mixin | Description
---- | ---
-`mdc-button-filled-accessible($container-fill-color)` | Sets the container fill color for a contained (_raised_ or _unelevated_) button, and updates the button's ink, icon, and ripple colors to meet accessibility standards
-
-#### Advanced Sass Mixins
-
-These mixins will override the color of the container, ink, outline or ripple. It is up to you to ensure your button meets accessibility standards.
-
-Mixin | Description
---- | ---
-`mdc-button-container-fill-color($color)` | Sets the container fill color to the given color.
-`mdc-button-icon-color($color)` | Sets the icon color to the given color.
-`mdc-button-ink-color($color)` | Sets the ink color to the given color, and sets the icon color to the given color unless `mdc-button-icon-color` is also used.
-`mdc-button-shape-radius($radius, $rtl-reflexive)` | Sets rounded shape to button with given radius size. Set `$rtl-reflexive` to true to flip radius values in RTL context, defaults to false.
-`mdc-button-horizontal-padding($padding)` | Sets horizontal padding to the given number.
-`mdc-button-outline-color($color)` | Sets the outline color to the given color.
-`mdc-button-outline-width($width, $padding)` | Sets the outline width to the given number (defaults to 2px) and adjusts padding accordingly. `$padding` is only required in cases where `mdc-button-horizontal-padding` is also included with a custom value.
-
-##### Caveat: Edge and CSS Custom Properties
-
-In browsers that fully support CSS custom properties, the above mixins will work if you pass in a [MDC Theme](../mdc-theme) property (e.g. `primary`) as an argument. However, Edge does not fully support CSS custom properties. If you are using the `mdc-button-container-fill-color` mixin, you must pass in an actual color value for support in Edge.
