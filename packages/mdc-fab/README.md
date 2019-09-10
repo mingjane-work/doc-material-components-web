@@ -4,7 +4,7 @@ layout: detail
 section: components
 excerpt: "A floating action button represents the primary action in an application"
 iconId: button
-path: /catalog/buttons/floating-action-buttons/
+path: /catalog/floating-action-buttons/
 -->
 
 # Floating Action Button
