@@ -17,17 +17,21 @@ path: /catalog/buttons/icon-buttons/
 
 Icon buttons allow users to take actions, and make choices, with a single tap. The icon button can be used to toggle between an on and off icon.
 
+<img src="" alt="This is an image or demo of an icon button">
+
 ## Using `mdc-icon-button`
 
 The `mdc-icon-button` component provides an implementation of Material Design’s [toggle button](https://material.io/components/buttons/#toggle-button) with icons.
 
 ### Install `mdc-icon-button`
 Install the `icon-button` before including it in your source.
+
     ```bash
     npm install @material/icon-button
     ```
 ### Add a theme (style)
 The `mdc-icon-button` component works with themes (styles). Import a style into your stylesheet to apply it to your website, including icon buttons:
+
     ```js
     @import "@material/icon-button/mdc-icon-button";
     ```
@@ -41,21 +45,26 @@ import {MDCRipple} from '@material/ripple';
 const iconButtonRipple = new MDCRipple(document.querySelector('.mdc-icon-button'));
 iconButtonRipple.unbounded = true;
 ```
+
 ### Add an icon to an `mdc-icon-button` instance
 
 Add an icon to your `mdc-icon-button` instance using the following steps:
 
 1. In your HTML file, reference the font library you would like to use (we recommend the [Material Icons](https://material.io/tools/icons/) from Google Fonts):
+
     ```HTML
     <head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     ```
+    
 1. Include the `mcd-icon-button__icon` class inside your icon button element.
   You can set the default `pressed` state with the attribute `aria-pressed`. If a toggle button default is `pressed` (`aria-pressed="true"`), you will need to add `mdc-icon-button__icon--on` to the to the class `mdc-icon-button__icon`.
 
     **Example using [Material Icons](https://material.io/tools/icons/)**
+    
     <img src="" alt="Image or demo of an icon button using Material Icons">
+    
     ```HTML
     <button id="add-to-favorites"
       class="mdc-icon-button"
@@ -67,7 +76,9 @@ Add an icon to your `mdc-icon-button` instance using the following steps:
     </button>
     ```
     **Example using SVG Icons**
+    
     <img src="" alt="Image or demo of an icon button using SVG icons">
+    
     ```html
     <button id="star-this-item"
        class="mdc-icon-button mdc-icon-button--on"
@@ -83,7 +94,9 @@ Add an icon to your `mdc-icon-button` instance using the following steps:
     </button>
     ```
     **Example using toggle button with an image**
+    
     <img src="" alt="Image or demo of an icon button using on and off button icons">
+    
     ```HTML
     <button id="star-this-item"
       class="mdc-icon-button mdc-icon-button--on"
@@ -186,4 +199,5 @@ cannot be disabled. Disabled icon buttons cannot be interacted with and have no 
 ### Example 1
 
 Description of the sample and what it does.
+
 <img src="" alt="This is the output of the example code">
