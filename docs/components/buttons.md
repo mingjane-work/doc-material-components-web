@@ -190,6 +190,20 @@ This example comes from https://glitch.com/~material-theme-builder
 #### Toggle button
 Icon buttons allow users to take actions, and make choices, with a single tap. The icon button can be used to toggle between an on and off icon.
 
+##### Toggle button example in a menu bar
+
+<img src="" alt="image of multiple toggle buttons in a menu bar">
+
+<span style="color:red">Note to developers: is there an equivalent to the following:</span>
+<img src="assets/button-toggle.png" alt="example toggle button from m.io/components/buttons">
+
+##### APIs used
+
+* list of links to web APIs used in this example
+
+```html
+Some source code to generate the image for the toggle buttons.
+```
 ##### Toggle button example with note icon
 
 <img src="assets/toggle-icon-button.png" alt="image of an icon button with note, toggled off">

@@ -29,7 +29,7 @@ Buttons allow users to take actions, and make choices, with a single tap. This b
 ## Using `mdc-button`
 The `mdc-button` component provides an implementation of Material Design’s button component without the toggle capability. Go to [mdc-icon-button](mdc-icon-button) to add [toggle buttons using icons](https://material.io/buttons/#toggle-button).
 
-### Install `mcd-button`
+### Install `mdc-button`
 Install the `mdc-button` component before including it in your source.
 
 ```bash
